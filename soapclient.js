@@ -200,7 +200,7 @@ SOAPClient._onSendSoapRequest = function(method, async, callback, wsdl, req)
     var o = null;
     var nd = SOAPClient._getElementsByTagName(req.responseXML, method + "Result");
     if(nd.length == 0)
-        var nd = SOAPClient._getElementsByTagName(req.responseXML, method + "Response");
+        nd = SOAPClient._getElementsByTagName(req.responseXML, method + "Response");
     if(nd.length == 0)
         nd = SOAPClient._getElementsByTagName(req.responseXML, "return");	// PHP web Service?
     if(nd.length == 0)

@@ -149,6 +149,9 @@ SOAPClient._loadWsdl = function(url, method, parameters, async, callback)
 SOAPClient._onLoadWsdl = function(url, method, parameters, async, callback, req)
 {
     var wsdl = req.responseXML;
+    if (wsdl == null) {
+        wsdl = new DOMParser().parseFromString(req.responseText, "text/xml");
+    }
     SOAPClient_cacheWsdl[url] = wsdl;	// save a copy in cache
     return SOAPClient._sendSoapRequest(url, method, parameters, async, callback, wsdl);
 }
